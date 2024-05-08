@@ -1,9 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const authRoutes = require('./authRoutes');
 const userController = require('../controllers/User');
 const carController = require('../controllers/Car');
 const updateController = require('../controllers/Update');
+
+const mongoose = require('mongoose');
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config(); // https://appdividend.com/2022/03/05/what-is-process-env-in-node-js/
+}
+
+const mongoURI = process.env.MONGODB_URI
+
+mongoose.connect(mongoURI)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.log('MongoDB connection error:', err));
+
 
 // Home page route
 router.get('/', (req, res) => {
@@ -14,8 +26,6 @@ router.get('/', (req, res) => {
 router.get('/status', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'Service is up and running!' });
   });
-
-router.use('/auth', authRoutes);  // For authentication related routes
 
 // User routes
 router.post('/users/register', userController.registerUser);

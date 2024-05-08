@@ -5,7 +5,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="flex flex-1 items-center justify-center bg-blue-600 text-white text-center px-4 py-20">
         <div>
-          <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">Welcome to Our Online Car Show</h1>
+          <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">Classic Car Crew Club</h1>
           <p className="mt-4 text-xl sm:text-2xl">Explore the world of cars with us.</p>
           <button className="mt-8 px-8 py-2 bg-white text-blue-600 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors">Get Started</button>
         </div>
@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white text-center p-4">
-        © {new Date().getFullYear()} Online Car Show. All rights reserved.
+        © {new Date().getFullYear()} Classic Car Crew Club. All rights reserved.
       </footer>
     </div>
   );
