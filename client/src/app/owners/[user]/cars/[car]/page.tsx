@@ -96,7 +96,7 @@ const CarProfile = ({ params }: { params: { user: string; car: string } }) => {
                 <li key={index}>
                   <strong>{update.date}</strong>: {update.title} -{" "}
                   {update.description}
-                  <Link href={`/updates/${update._id}`}>View Update</Link>
+                  <Link href={`${window.location.pathname}/updates/${update._id}`}>View Update</Link>
                 </li>
               ))}
             </ul>
