@@ -16,3 +16,7 @@ The Online Car Show is a web application that allows car enthusiasts to create p
 - **Database:** MongoDB with Mongoose for object data modeling
 - **Authentication:** Passport.js (Local & Google OAuth)
 - **Frontend:** NEXTJS
+
+
+# Dad's feedback:
+Basic info like where it was made, year, how many produced, value from Hagerty value guide, engine size and type, restored or original or hot rod.
