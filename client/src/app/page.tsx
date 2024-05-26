@@ -7,7 +7,6 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-
       {/* Hero Section */}
       <div className="flex flex-1 items-center justify-center bg-blue-600 text-white text-center px-4 py-20">
         <div>
@@ -25,18 +24,16 @@ export default async function Home() {
 
       {/** Auth Testing*/}
       <div className="flex flex-col justify-center items-center min-h-full">
-  {session ? (
-    <>
-    <p className="text-left mt-5" >Session Info:</p>
-      <pre className="text-left">{JSON.stringify(session, null, 2)}</pre>
-      <SignOut/>
-    </>
-  ) : (
-    <SignIn />
-  )}
-</div>
-
-
+        {session ? (
+          <>
+            <p className="mt-5">Session Info:</p>
+            <pre className="text-left">{JSON.stringify(session, null, 2)}</pre>
+            <SignOut />
+          </>
+        ) : (
+          <SignIn />
+        )}
+      </div>
 
       {/* Features Section */}
       <div className="container mx-auto px-4 py-16">

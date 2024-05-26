@@ -2,9 +2,9 @@
 import Link from "next/link";
 // Assuming you have a method to determine the logged-in user's ID or username
 import React, { useState, useEffect } from "react";
+import { auth } from "@/auth";
 
-
-const UserProfile = ({ params }: { params: { user: string } }) => {
+const UserProfile = async ({ params }: { params: { user: string } }) => {
   interface Car {
     _id: string;
     model: string;
@@ -18,6 +18,8 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
     facebookId?: string;
     cars?: Car[];
   }
+
+  const session = await auth();
 
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -61,12 +63,12 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
 
       const data = {
         username: "Crystal Parker",
-        email: "vertfromage@gmail.com",
+        email: "vertfromage@gmail.com", // shouldn't actually show... should be encrypted at rest
         cars: [{ _id: "hudson-jet-1953", model: "Hudson Jet" }],
       };
 
       setUserData(data);
-      // Placeholder: Replace with actual logged-in user retrieval logic
+      // Placeholder: Replace with actual logged-in user retrieval logic - using session
       setLoggedInUser("crystal-parker");
     };
 
@@ -101,8 +103,6 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
       />
       <div>
         <p>Email: {userData.email}</p>
-        {userData.googleId && <p>Google ID: {userData.googleId}</p>}
-        {userData.facebookId && <p>Facebook ID: {userData.facebookId}</p>}
       </div>
 
       {userData.cars && (
