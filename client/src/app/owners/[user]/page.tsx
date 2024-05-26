@@ -86,7 +86,7 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4 shadow rounded-lg bg-white">
+    <div className="max-w-xl mx-auto p-4 shadow rounded-lg h-screen bg-white">
       <h1 className="text-2xl font-bold">
         {userData.username || params.user} Profile Page
       </h1>

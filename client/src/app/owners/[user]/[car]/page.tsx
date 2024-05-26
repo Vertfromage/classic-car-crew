@@ -71,7 +71,7 @@ const CarProfile = ({ params }: { params: { user: string; car: string } }) => {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-4 shadow rounded-lg bg-white">
+    <div className="max-w-xl mx-auto p-4 h-screen shadow rounded-lg bg-white">
       <h1>Car Profile Page</h1>
       <p>
         Welcome to {userData.username}'s {carData.model} profile!

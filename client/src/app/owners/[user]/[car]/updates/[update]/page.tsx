@@ -39,7 +39,7 @@ const Update = ({ params }: { params: { user: string, car: string, update: strin
     }
 
     return (
-        <div className="max-w-xl mx-auto p-4 shadow rounded-lg bg-white">
+        <div className="max-w-xl mx-auto p-4 h-screen shadow rounded-lg bg-white">
             <h1>Update Details Page</h1>
             <p>Welcome to {params.user}'s {params.car} update!</p>
             <div>
