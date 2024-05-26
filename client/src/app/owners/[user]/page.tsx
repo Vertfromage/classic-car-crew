@@ -111,7 +111,7 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
           <ul>
             {userData.cars.map((car) => (
               <li key={car._id}>
-                {car.model} - <Link href={`${window.location.pathname}/cars/${car._id}`}>View Car</Link>
+                {car.model} - <Link href={`${window.location.pathname}/${car._id}`}>View Car</Link>
               </li>
             ))}
           </ul>
