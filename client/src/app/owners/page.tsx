@@ -1,7 +1,4 @@
 "use client";
-import Link from "next/link";
-// Assuming you have a method to determine the logged-in user's ID or username
-import React, { useState, useEffect } from "react";
 
 /** This is a page to show all owners */
 const Owners = ({ params }: { params: { user: string } }) => {

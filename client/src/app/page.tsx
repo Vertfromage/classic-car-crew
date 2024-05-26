@@ -1,12 +1,13 @@
-import { SignIn, SignOut } from "@/components/signin";
 import { auth } from "@/auth";
+import AuthBar from "@/components/AuthBar";
 
-// app/page/index.page.tsx
 export default async function Home() {
   const session = await auth();
 
   return (
+    
     <div className="min-h-screen flex flex-col">
+      <AuthBar />
       {/* Hero Section */}
       <div className="flex flex-1 items-center justify-center bg-blue-600 text-white text-center px-4 py-20">
         <div>
@@ -20,19 +21,6 @@ export default async function Home() {
             Get Started
           </button>
         </div>
-      </div>
-
-      {/** Auth Testing*/}
-      <div className="flex flex-col justify-center items-center min-h-full">
-        {session ? (
-          <>
-            <p className="mt-5">Session Info:</p>
-            <pre className="text-left">{JSON.stringify(session, null, 2)}</pre>
-            <SignOut />
-          </>
-        ) : (
-          <SignIn />
-        )}
       </div>
 
       {/* Features Section */}

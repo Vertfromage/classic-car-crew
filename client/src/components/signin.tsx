@@ -9,7 +9,7 @@ export function SignIn() {
         await signIn("github")
       }}
     >
-      <button className="mt-8 px-8 py-2 bg-white text-blue-600 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors" type="submit">Signin with GitHub</button>
+      <button className=" px-8 py-2 bg-white text-blue-600 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors" type="submit">Signin with GitHub</button>
     </form>
   )
 } 
@@ -22,7 +22,7 @@ export function SignOut() {
           await signOut()
         }}
       >
-        <button className="mt-8 px-8 py-2 bg-white text-blue-600 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors" type="submit">Signout</button>
+        <button className=" px-8 py-2 bg-white text-blue-600 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors" type="submit">Signout</button>
       </form>
     )
   }

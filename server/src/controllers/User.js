@@ -1,14 +1,12 @@
 const User = require('../models/user');
-const bcrypt = require('bcryptjs');
 
 exports.registerUser = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { name, email, image } = req.body;
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
-            username,
+            name,
             email,
-            password: hashedPassword
+            image
         });
         await newUser.save();
         res.status(201).send('User registered');
@@ -17,13 +15,8 @@ exports.registerUser = async (req, res) => {
     }
 };
 
-exports.loginUser = async (req, res) => {
-    // Authentication is usually handled by middleware; just a placeholder
-    res.send('User logged in');
-};
-
 exports.updateUser = async (req, res) => {
-    const { username, email } = req.body;
+    const { name, email, image } = req.body;
     try {
         const user = await User.findByIdAndUpdate(req.user._id, { username, email }, { new: true });
         res.status(200).json(user);

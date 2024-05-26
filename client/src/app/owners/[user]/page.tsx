@@ -2,9 +2,8 @@
 import Link from "next/link";
 // Assuming you have a method to determine the logged-in user's ID or username
 import React, { useState, useEffect } from "react";
-import { auth } from "@/auth";
 
-const UserProfile = async ({ params }: { params: { user: string } }) => {
+const UserProfile = ({ params }: { params: { user: string } }) => {
   interface Car {
     _id: string;
     model: string;
@@ -18,8 +17,6 @@ const UserProfile = async ({ params }: { params: { user: string } }) => {
     facebookId?: string;
     cars?: Car[];
   }
-
-  const session = await auth();
 
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);

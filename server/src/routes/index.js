@@ -29,7 +29,6 @@ router.get('/status', (req, res) => {
 
 // User routes
 router.post('/users/register', userController.registerUser);
-router.post('/users/login', userController.loginUser);
 router.put('/users/update', userController.updateUser);
 router.delete('/users/delete', userController.deleteUser);
 
