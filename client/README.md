@@ -16,3 +16,6 @@ Still need
 - [] hook up auth correctly
 - [] hook up to backend
 - [] Style everything
+
+# Important docs:
+https://authjs.dev/getting-started/session-management/get-session
