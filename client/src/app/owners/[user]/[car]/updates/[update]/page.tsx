@@ -13,7 +13,7 @@ const Update = ({ params }: { params: { user: string, car: string, update: strin
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await fetch(`/api/users/${params.owner}/cars/${params.car}/updates/${params.update}`);
+                // const response = await fetch(`/api/users/${params.user}/cars/${params.car}/updates/${params.update}`);
                 // if (!response.ok) {
                 //     throw new Error('Failed to fetch update details');
                 // }

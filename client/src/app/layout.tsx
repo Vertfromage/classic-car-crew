@@ -1,15 +1,17 @@
+import { ReactNode } from 'react';
+import { SessionProvider } from 'next-auth/react';
 import './globals.css';
+import AuthBar from '@/components/AuthBar';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en"> 
+    <html lang="en">
       <body>
-        {children}
+        <SessionProvider>
+          <AuthBar/>
+          {children}
+        </SessionProvider>
       </body>
     </html>
-  )
+  );
 }

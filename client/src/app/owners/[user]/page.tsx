@@ -24,7 +24,7 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
   const [showAddCarForm, setShowAddCarForm] = useState(false);
   const [newCarModel, setNewCarModel] = useState("");
 
-  const handleAddCar = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleAddCar = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const payload = { model: newCarModel };
   

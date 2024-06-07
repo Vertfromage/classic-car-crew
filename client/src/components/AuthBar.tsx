@@ -1,12 +1,14 @@
+'use client';
 import { SignIn, SignOut } from "@/components/signin";
-import { auth } from "@/auth";
+import { useSession } from 'next-auth/react';
 import Link from "next/link";
 // Assuming you have a method to determine the logged-in user's ID or username
 import React, { useState, useEffect } from "react";
 
+
 /** This is a page to show all owners */
-const AuthBar = async () => {
-  const session = await auth();
+const AuthBar = () => {
+  const { data: session, status } = useSession();
   return (
     <div className="bg-gray-800 ">
       <div className="max-w-7xl mx-auto px-4">
@@ -25,12 +27,12 @@ const AuthBar = async () => {
           </div>
         </div>
       </div>
-      {/* {session && (
+      {session && (
         <div>
           <p className="text-white">Session Info:</p>
           <pre className="text-white">{JSON.stringify(session, null, 2)}</pre>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

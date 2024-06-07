@@ -1,13 +1,11 @@
-import { auth } from "@/auth";
-import AuthBar from "@/components/AuthBar";
 
-export default async function Home() {
-  const session = await auth();
+
+
+export default function Home() {
 
   return (
     
     <div className="min-h-screen flex flex-col">
-      <AuthBar />
       {/* Hero Section */}
       <div className="flex flex-1 items-center justify-center bg-blue-600 text-white text-center px-4 py-20">
         <div>
