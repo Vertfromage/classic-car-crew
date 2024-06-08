@@ -59,14 +59,14 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
       // TODO fetch user cars too!
 
       const data = {
-        username: "Crystal Parker",
-        email: "vertfromage@gmail.com", // shouldn't actually show... should be encrypted at rest
+        username: "Bob farts",
+        email: "fartyface@gmail.com", // shouldn't actually show... should be encrypted at rest
         cars: [{ _id: "hudson-jet-1953", model: "Hudson Jet" }],
       };
 
       setUserData(data);
       // Placeholder: Replace with actual logged-in user retrieval logic - using session
-      setLoggedInUser("crystal-parker");
+      setLoggedInUser("bob-farts");
     };
 
     fetchUserData();

@@ -38,8 +38,8 @@ const CarProfile = ({ params }: { params: { user: string; car: string } }) => {
         // const carData = await carResponse.json();
 
         const userData = {
-          username: "Crystal Parker",
-          email: "vertfromage@gmail.com",
+          username: "Bob Farts",
+          email: "fartyface@gmail.com",
           cars: [{ _id: "hudson-jet-1953", model: "Hudson Jet" }],
         };
         const carData = {
