@@ -18,7 +18,7 @@ exports.registerUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     const { name, email, image } = req.body;
     try {
-        const user = await User.findByIdAndUpdate(req.user._id, { username, email }, { new: true });
+        const user = await User.findByIdAndUpdate(req.user._id, { name, email }, { new: true });
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: error.message });
