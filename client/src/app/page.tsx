@@ -1,7 +1,7 @@
-
-
+import { GetStartedButton } from "@/components/GetStartedButton";
 
 export default function Home() {
+
 
   return (
     
@@ -12,12 +12,10 @@ export default function Home() {
           <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
             Classic Car Crew Club
           </h1>
-          <p className="mt-4 text-xl sm:text-2xl">
+          <p className="my-4 text-xl sm:text-2xl">
             Explore the world of cars with us.
           </p>
-          <button className="mt-8 px-8 py-2 bg-white text-blue-600 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors">
-            Get Started
-          </button>
+          <GetStartedButton/>
         </div>
       </div>
 
