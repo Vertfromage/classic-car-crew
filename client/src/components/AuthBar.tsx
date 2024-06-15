@@ -4,11 +4,13 @@ import { useSession } from 'next-auth/react';
 import Link from "next/link";
 // Assuming you have a method to determine the logged-in user's ID or username
 import React, { useState, useEffect } from "react";
+import {UserAvatar} from "./UserAvatar"
 
 
 /** This is a page to show all owners */
 const AuthBar = () => {
   const { data: session, status } = useSession();
+  // TODO use status...
   return (
     <div className="bg-gray-800 ">
       <div className="max-w-7xl mx-auto px-4">
@@ -19,7 +21,7 @@ const AuthBar = () => {
           <div className="flex items-center space-x-4">
             {session ? (
               <>
-                <SignOut />
+                <SignOut /> <UserAvatar session={session}/>
               </>
             ) : (
               <SignIn />
@@ -27,12 +29,12 @@ const AuthBar = () => {
           </div>
         </div>
       </div>
-      {session && (
+      {/* {session && (
         <div>
           <p className="text-white">Session Info:</p>
           <pre className="text-white">{JSON.stringify(session, null, 2)}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

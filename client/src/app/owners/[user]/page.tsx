@@ -1,9 +1,16 @@
 "use client";
+import { formatNameForUrl } from "@/components/formatNameForUrl";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 // Assuming you have a method to determine the logged-in user's ID or username
 import React, { useState, useEffect } from "react";
 
 const UserProfile = ({ params }: { params: { user: string } }) => {
+  // Session for loggedIn User
+  const { data: session } = useSession();
+  const userName = session?.user?.name ?? "Default User";
+  const loggedInUser = formatNameForUrl(userName);
+
   interface Car {
     _id: string;
     model: string;
@@ -20,38 +27,37 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
 
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState("");
   const [showAddCarForm, setShowAddCarForm] = useState(false);
   const [newCarModel, setNewCarModel] = useState("");
 
   const handleAddCar = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const payload = { model: newCarModel };
-  
+
     try {
-      console.log(payload)
+      console.log(payload);
       // TODO Add car to server
-        // const response = await fetch(`/api/users/${params.user}/cars`, {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(payload),
-        // });
-  
-        // if (!response.ok) {
-        //     throw new Error('Failed to add car');
-        // }
-  
-        // const addedCar = await response.json();
-        // setUserData({...userData, cars: [...userData.cars, addedCar]});
-        // setNewCarModel('');  // Reset the form
-        // setShowAddCarForm(false);  // Hide the form
+      // const response = await fetch(`/api/users/${params.user}/cars`, {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(payload),
+      // });
+
+      // if (!response.ok) {
+      //     throw new Error('Failed to add car');
+      // }
+
+      // const addedCar = await response.json();
+      // setUserData({...userData, cars: [...userData.cars, addedCar]});
+      // setNewCarModel('');  // Reset the form
+      // setShowAddCarForm(false);  // Hide the form
     } catch (error) {
-        console.error("Error adding new car:", error);
+      console.error("Error adding new car:", error);
     }
   };
 
   useEffect(() => {
-    // Simulating fetching user data
+    // Simulating fetching user data based on url
     const fetchUserData = async () => {
       // TODO Replace with actual fetch call
       //const response = await fetch(`/api/users/${params.user}`);
@@ -66,7 +72,6 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
 
       setUserData(data);
       // Placeholder: Replace with actual logged-in user retrieval logic - using session
-      setLoggedInUser("bob-farts");
     };
 
     fetchUserData();
@@ -108,7 +113,10 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
           <ul>
             {userData.cars.map((car) => (
               <li key={car._id}>
-                {car.model} - <Link href={`${window.location.pathname}/${car._id}`}>View Car</Link>
+                {car.model} -{" "}
+                <Link href={`${window.location.pathname}/${car._id}`}>
+                  View Car
+                </Link>
               </li>
             ))}
           </ul>
@@ -117,16 +125,19 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
 
       {loggedInUser === params.user && (
         <>
-        <button
-          onClick={toggleEditMode}
-          className="mt-4 mr-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          {isEditMode ? "Cancel Edit" : "Edit Profile"}
-        </button>
-         <button onClick={toggleCarForm} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
-         Add New Car
-     </button>
-     </>
+          <button
+            onClick={toggleEditMode}
+            className="mt-4 mr-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            {isEditMode ? "Cancel Edit" : "Edit Profile"}
+          </button>
+          <button
+            onClick={toggleCarForm}
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          >
+             {isEditMode ? "Cancel New Car" : "Add New Car"}
+          </button>
+        </>
       )}
       {isEditMode && (
         <form className="mt-4">
@@ -154,15 +165,26 @@ const UserProfile = ({ params }: { params: { user: string } }) => {
           </button>
         </form>
       )}
-              {showAddCarForm && (
-            <form onSubmit={handleAddCar} className="mt-4">
-                <label className="block mb-2 text-sm font-medium text-gray-700">Car Model</label>
-                <input type="text" value={newCarModel} onChange={(e) => setNewCarModel(e.target.value)} className="w-full p-2 border border-gray-300 rounded" required />
-                <button type="submit" className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-                    Add Car
-                </button>
-            </form>
-        )}
+      {showAddCarForm && (
+        <form onSubmit={handleAddCar} className="mt-4">
+          <label className="block mb-2 text-sm font-medium text-gray-700">
+            Car Model
+          </label>
+          <input
+            type="text"
+            value={newCarModel}
+            onChange={(e) => setNewCarModel(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+          <button
+            type="submit"
+            className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            Add Car
+          </button>
+        </form>
+      )}
     </div>
   );
 };
